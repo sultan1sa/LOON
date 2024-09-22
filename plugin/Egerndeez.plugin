@@ -1,6 +1,6 @@
 #!name=Egerndeez
 #!desc=Egerndeez
-#!icon=https://img.cdn-worldsapps.com/apps/1616105820/icon-apps-like-egern.jpg
+#!icon=https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/90/ce/8d/90ce8daf-e661-130f-03f9-b2be1bc1d891/AppIcon-0-0-1x_U007epad-0-85-220.png/1200x630wa.png
 
 [Rewrite]
 ^https?://api\.revenuecat\.com/.+/(receipts$|subscribers/?(.*?)*$) header-del X-RevenueCat-ETag
