@@ -11,10 +11,10 @@
 #!date = 2024-09-24 23:06:40
 
 [Argument]
-Type = select, "Official", "Translate", tag = 字幕类型, desc = 请选择要使用的字幕，双语字幕将使用您选择类型呈现。
-AutoCC = switch, true, tag = 自动显示翻译字幕, desc = 开启后总是自动开启显示字幕
-ShowOnly = switch, false, tag = 仅显示“自动翻译”字幕, desc = 开启后仅显示“自动翻译”后的字幕，不显原文字幕。
-Position = select, "Forward", "Reverse", tag = 原文字幕位置, desc = 原文字幕的显示位置
+Type = select, "Official", "Translate", tag = Subtitle type, desc = Please select the subtitles you want to use, bilingual subtitles will be rendered using the type you select.
+AutoCC = switch, true, tag = Show translated subtitles automatically, desc = Show subtitles is always turned on automatically when turned on
+ShowOnly = switch, false, tag = show only "auto-translated" subtitles, desc = show only "auto-translated" subtitles when turned on, no original subtitles.
+Position = select, "Forward", "Reverse", tag = position of the original subtitles, desc = position of the original subtitles
 
 [Script]
 # YouTube字幕翻译
