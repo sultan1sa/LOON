@@ -1,14 +1,5 @@
 #!name=YouTubeاللفة العربية 
 #!desc=إزالة الإعلانات من مقاطع فيديو YouTube، والشلال، والبحث، والشورتات، وإزالة زر التحميل في الأسفل، وإضافة صورة داخل صورة وترجمة الترجمة.إزالة أزرار التحميل والاختيار والترقية في الجزء السفلي من موسيقى يوتيوب، وإضافة ترجمة كلمات الأغاني ودعم تشغيل الخلفية لكليهما.تتطلب هذه الإضافة إصدار Loon 3.1.7 (677) وما فوق، ويجب تمكين الحماية الاحتياطية لـ QUIC.يدعم مستخدمي الاشتراك المميز، ولا يدعم أجهزة tvOS.
-#!author=Maasea[https://github.com/Maasea], VirgilClyne[https://github.com/VirgilClyne], Choler[https://github.com/Choler], DivineEngine[https://github.com/DivineEngine], app2smile[https://github.com/app2smile]
-#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/YouTube.png
-#!category=iKeLee
-#!openUrl=https://apps.apple.com/app/id544007664
-#!tag=去广告
-#!system_version=15
-#!loon_version=3.2.1(749)
-#!homepage=https://gitlab.com/lodepuly/ProxyResource-/blob/main/README.md
-#!date=2024-06-11 21:59:22
 
 [Rule]
 AND, ((DOMAIN-SUFFIX, googlevideo.com,extended-matching),  (PROTOCOL, QUIC)), REJECT
