@@ -1,0 +1,35 @@
+#!name=All In One
+#!desc=local
+#!icon=https://github.com/Toperlock/Quantumult/raw/main/icon/Doraemon/Doraemon-1041.png
+
+[Rule]
+AND,((DOMAIN-SUFFIX,googlevideo.com),(PROTOCOL,UDP)),REJECT
+AND,((DOMAIN,youtubei.googleapis.com),(PROTOCOL,UDP)),REJECT
+
+[Rewrite]
+^https?://api.revenuecat.com/.+/(receipts$|subscribers/?(.*?)*$) header-del x-revenuecat-etag
+^https?://api.revenuecat.com/.+/(receipts$|subscribers/?(.*?)*$) header-del X-RevenueCat-ETag
+^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad mock-response-body data-type=text data="{}" status-code=200
+
+[Script]
+#hostname = *.googlevideo.com, youtubei.googleapis.com
+http-request ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|reel\/reel_watch_sequence|get_watch) script-path=https://raw.githubusercontent.com/sultan1sa/Try-configure-/refs/heads/main/Script/Youtube/dist/youtube.request.preview.js, requires-body=true, binary-body-mode=true, tag=youtube.request
+
+http-response ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch) script-path=https://raw.githubusercontent.com/sultan1sa/Try-configure-/refs/heads/main/Script/Youtube/dist/youtube.response.preview.js, requires-body=true, binary-body-mode=true, tag=youtube.response, argument="{"lyricLang":"{{{歌词翻译语#SpotifyPremium
+
+#hostname = api.revenuecat.com
+http-response ^https:\/\/api\.revenuecat\.com\/.+\/(receipts$|subscribers\/[^/]+$) script-path=https://github.com/osinx/Script/raw/refs/heads/main/vip/revenuecat.js, requires-body=true, timeout=60, tag=revenuecat
+
+http-request ^https:\/\/api\.revenuecat\.com\/.+\/(receipts|subscribers) script-path=https://raw.githubusercontent.com/DungHoang120401/Nobita/Module/LKG_delete_header.js, timeout=60, tag=deleteHeader
+http-response https:\/\/api\.apphud\.com\/v1\/(subscriptions|customers) script-path=https://raw.githubusercontent.com/sultan1sa/AllinOneRewrite-/main/Apphud.js, requires-body=true, timeout=10, tag=apphud
+
+http-response api.qonversion.io/v1/user/init script-path=https://raw.githubusercontent.com/sultan1sa/AllinOneRewrite-/main/10mail.js, requires-body=true, timeout=10, tag=mail10
+
+http-response https://api.adapty.io/api/v1/sdk/in-apps/apple/receipt/validate/ script-path=https://raw.githubusercontent.com/sultan1sa/AllinOneRewrite-/main/ChatUncensored.js, requires-body=true, timeout=10, tag=chat Uncensored
+#************************************#
+
+#hostname = premium*.truecaller.com
+http-response ^https://premium-(.+)\.truecaller\.com/v\d/(subscriptions|products\/apple) script-path=https://raw.githubusercontent.com/lonely0811/olsd/main/truecall.js, requires-body=true, tag=Truecaller
+
+[MITM]
+hostname = *.googlevideo.com, youtubei.googleapis.com, premium*.truecaller.com, api.revenuecat.com, api.adapty.io, api.qapi.qonversion.io, api.apphud.com
